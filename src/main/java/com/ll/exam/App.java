@@ -33,7 +33,10 @@ public class App {
                     wordList.add(word1);
                     System.out.println(wordList.size() + "번 명언이 등록되었습니다.");
                 case "목록":
-                    for
+                    System.out.println("번호 / 작가 / 명언\n" + "--------------------------");
+                    for(Word element: wordList){
+                        System.out.println(element.id + " / " + element.author + " / " + element.word);
+                    }
 
             }
         }
