@@ -30,4 +30,13 @@ public class FamousSaying {
         this.writer = writer;
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "FamousSaying{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", writer='" + writer + '\'' +
+                '}';
+    }
 }
