@@ -1,11 +1,21 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    private static String mode = "prod";
 
+    public static String getMode() {
+        return mode;
+    }
+
+    public static void setMode(String mode) {
+        App.mode = mode;
+    }
+
+    public static String getDataBaseDir(){
+        return mode + "_data";
+    }
     private Scanner sc;
 
     public App(Scanner sc) {
@@ -40,6 +50,7 @@ public class App {
                     famousSayingController.update(rq);
                     break;
                 case "빌드":
+                    famousSayingController.build(rq);
                     break;
                 case "종료":
                     break outer;

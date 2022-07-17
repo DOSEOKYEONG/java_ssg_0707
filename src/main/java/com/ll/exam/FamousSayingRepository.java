@@ -1,61 +1,35 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FamousSayingRepository {
-    private int LastId;
-    private List<FamousSaying> famousSayingList;
+    private FamousSayingTable famousSayingTable;
 
     public FamousSayingRepository() {
-        famousSayingList = new ArrayList<>();
-        LastId = 1;
+        famousSayingTable = new FamousSayingTable();
     }
 
     public FamousSaying add(String writer, String content) {
-        FamousSaying famousSaying = new FamousSaying(LastId, writer, content);
-
-        famousSayingList.add(famousSaying);
-
-        LastId++;
-
-        return famousSaying;
+        return famousSayingTable.save(writer, content);
     }
 
     public List<FamousSaying> findAll() {
-        return famousSayingList;
+        return famousSayingTable.findAll();
     }
 
     public FamousSaying findById(int objectId) {
-        for (FamousSaying fs : famousSayingList){
-            if(fs.getId() == objectId){
-                return fs;
-            }
-        }
-        System.out.println("해당 게시글이 존재하지 않습니다.");
-        return null;
+        return famousSayingTable.findById(objectId);
     }
 
     public boolean update(int objectId, String writer, String content) {
-        FamousSaying famousSaying = findById(objectId);
-
-        if ( famousSaying == null){
-            return false;
-        }
-        famousSaying.setContent(content);
-        famousSaying.setWriter(writer);
-
-        return true;
+       return famousSayingTable.save(objectId, writer, content);
     }
 
     public boolean remove(int objectId) {
-        FamousSaying famousSaying = findById(objectId);
+        return famousSayingTable.removeById(objectId);
+    }
 
-        if ( famousSaying == null){
-            return false;
-        }
-        famousSayingList.remove(famousSaying);
-
-        return true;
+    public void dumpToJson() {
+        famousSayingTable.dumpToJson();
     }
 }

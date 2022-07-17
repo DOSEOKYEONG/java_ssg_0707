@@ -39,4 +39,14 @@ public class FamousSaying {
                 ", writer='" + writer + '\'' +
                 '}';
     }
+
+    public String toJson() {
+        return """
+                {
+                    "id": %d,
+                    "content": "%s",
+                    "writer": "%s"
+                }
+                """.stripIndent().formatted(id, content, writer);
+    }
 }

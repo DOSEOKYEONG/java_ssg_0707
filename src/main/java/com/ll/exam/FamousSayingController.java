@@ -15,14 +15,14 @@ public class FamousSayingController {
     }
 
     public void remove(Rq rq) {
-        int ObjectId = rq.ObjectId;
+        int ObjectId = rq.getIntParam("id", 0);
         famousSayingService.remove(ObjectId);
 
         System.out.println(ObjectId + "번 글이 삭제 되었습니다.");
     }
 
     public void update(Rq rq) {
-        int ObjectId = rq.ObjectId;
+        int ObjectId = rq.getIntParam("id", 0);
         System.out.println("작가 : ");
         String writer = sc.nextLine().trim();
         System.out.println("명언 : ");
@@ -50,5 +50,9 @@ public class FamousSayingController {
         String content = sc.nextLine().trim();
         FamousSaying famousSaying = famousSayingService.write(writer, content);
         System.out.println(famousSaying.getId() + "번 명언이 등록되었습니다.");
+    }
+
+    public void build(Rq rq) {
+        famousSayingService.dumpToJson();
     }
 }

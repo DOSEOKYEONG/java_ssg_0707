@@ -1,7 +1,7 @@
 package com.ll.exam;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FamousSayingService {
 
@@ -31,5 +31,9 @@ public class FamousSayingService {
 
     public boolean remove(int objectId) {
         return famousSayingRepository.remove(objectId);
+    }
+
+    public void dumpToJson() {
+        famousSayingRepository.dumpToJson();
     }
 }
